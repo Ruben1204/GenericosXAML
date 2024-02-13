@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:coleccion="clr-namespace:System.Collections.Generic;assembly=netstandard"
+             xmlns:coleccion2="clr-namespace:System;assembly=netstandard"
+             xmlns:Models="clr-namespace:GenericosXAML.Models"
+             x:Class="GenericosXAML.MainPage">
+
+    <!--<CollectionView HorizontalOptions="Center">
+        <CollectionView.ItemsSource>
+            <coleccion:List x:TypeArguments="x:String">
+                <x:String>Item 1</x:String>
+                <x:String>Item 2</x:String>
+            </coleccion:List>
+        </CollectionView.ItemsSource>
+    </CollectionView>-->
+
+    <!--<CollectionView HorizontalOptions="Center">
+    <CollectionView.ItemsSource>
+            <coleccion:List x:TypeArguments="coleccion2:String">
+                <coleccion2:String>Item1</coleccion2:String>
+                <coleccion2:String>Item2</coleccion2:String>
+            </coleccion:List>
+        </CollectionView.ItemsSource>
+</CollectionView>-->
+
+    <CollectionView HorizontalOptions="Center">
+        <CollectionView.ItemsSource>
+            <coleccion:List x:TypeArguments="Models:Monkey">
+                <Models:Monkey 
+                    Nombre="Babuino"
+                    Habitat="Africa y Asia"
+                    UrlImagen="https://www.ecured.cu/images/4/4b/Babuino_macho.jpeg"/>
+                <Models:Monkey 
+                    Nombre="Mono Capuchino"
+                    Habitat="Sur y centro de America"
+                    UrlImagen="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Capuchin_Costa_Rica.jpg/200px-Capuchin_Costa_Rica.jpg"/>
+            </coleccion:List>
+        </CollectionView.ItemsSource>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.RowSpan="2"
+                           Source="{Binding UrlImagen}"
+                           Aspect="AspectFill"
+                           HeightRequest="60"
+                           WidthRequest="60"/>
+                    <Label Grid.Column="1"
+                           Text="{Binding Nombre}"
+                           FontAttributes="Bold"/>
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Habitat}"
+                           FontAttributes="Italic"
+                           VerticalOptions="End"/>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
